@@ -32,15 +32,16 @@ class MyBody extends StatelessWidget {
           name,
           style: TextStyle(
               fontSize: 40, color: Colors.white, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
         ),
         margin: EdgeInsets.all(20),
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
-            color: Colors.blue[800],
+            color: Colors.blue[300],
             borderRadius: BorderRadius.circular(40),
             boxShadow: [
               BoxShadow(
-                  color: Colors.grey[700],
+                  color: Colors.grey[300],
                   spreadRadius: 5,
                   blurRadius: 5,
                   offset: Offset(0, 3))
