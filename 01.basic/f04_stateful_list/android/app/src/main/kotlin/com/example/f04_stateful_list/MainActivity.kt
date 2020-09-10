@@ -1,4 +1,4 @@
-package com.example.hello
+package com.example.f04_stateful_list
 
 import io.flutter.embedding.android.FlutterActivity
 
