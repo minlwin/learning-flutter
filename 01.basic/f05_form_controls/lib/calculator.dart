@@ -27,7 +27,7 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  Widget _resultArea() => Card(
+  _resultArea() => Card(
         color: Colors.blue[200],
         child: Container(
           height: 100,
@@ -39,7 +39,7 @@ class _CalculatorState extends State<Calculator> {
         ),
       );
 
-  Widget _buttons() => Row(
+  _buttons() => Row(
         children: [
           _button("Plus", (a, b) => double.parse(a) + double.parse(b)),
           _button("Minus", (a, b) => double.parse(a) - double.parse(b)),
@@ -48,7 +48,7 @@ class _CalculatorState extends State<Calculator> {
         ],
       );
 
-  Widget _button(String sign, Calculate calc) => Expanded(
+  _button(String sign, Calculate calc) => Expanded(
         child: Container(
           color: Colors.blue[300],
           margin: EdgeInsets.all(8),
@@ -70,7 +70,7 @@ class _CalculatorState extends State<Calculator> {
         ),
       );
 
-  Widget _inputs() => Card(
+  _inputs() => Card(
         child: Container(
           padding: EdgeInsets.all(16),
           child: Column(
