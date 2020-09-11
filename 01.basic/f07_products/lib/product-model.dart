@@ -9,8 +9,8 @@ class Product {
 enum Category { Foods, Drinks, Snacks }
 
 extension CategoryExtension on Category {
-  get title => toString().substring(0, 1).toUpperCase();
   get name => toString().split(".").last;
+  get title => toString().split(".").last.substring(0, 1).toUpperCase();
 }
 
 class ProductModel {
