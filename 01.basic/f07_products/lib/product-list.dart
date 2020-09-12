@@ -31,15 +31,27 @@ class _ProductListState extends State<ProductList> {
     });
   }
 
+  _removeProduct(Product p) {
+    setState(() {
+      widget.model.remove(p);
+    });
+  }
+
   _item(Product p) => Card(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.all(8),
           child: ListTile(
             leading: CircleAvatar(
               child: Text(p.category.title),
             ),
             title: Text(p.name),
-            subtitle: Text(p.price.toString()),
+            subtitle: Text(p.priceInKyat()),
+            trailing: GestureDetector(
+              child: Icon(Icons.delete),
+              onTap: () {
+                _removeProduct(p);
+              },
+            ),
           ),
         ),
         margin: EdgeInsets.all(4),

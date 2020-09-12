@@ -1,9 +1,16 @@
+import 'package:intl/intl.dart';
+
 class Product {
   Category category;
   String name;
   int price;
 
   Product({this.category, this.name, this.price});
+
+  priceInKyat() {
+    var format = NumberFormat("#,##0 MMK");
+    return format.format(price);
+  }
 }
 
 enum Category { Foods, Drinks, Snacks }
