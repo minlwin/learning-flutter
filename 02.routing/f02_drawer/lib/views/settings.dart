@@ -6,7 +6,22 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewBase(
       title: "Settings",
-      body: Container(),
+      body: Container(
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image(image: AssetImage("images/logo2017.png")),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                "Settings",
+                style: Theme.of(context).textTheme.headline3,
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

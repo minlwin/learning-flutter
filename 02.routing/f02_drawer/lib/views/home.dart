@@ -1,3 +1,4 @@
+import 'package:f02_drawer/views/widgets/circular-icon.dart';
 import 'package:f02_drawer/views/widgets/view-base.dart';
 import 'package:flutter/material.dart';
 
@@ -25,20 +26,14 @@ class Home extends StatelessWidget {
                   "This is navigation by Navigation Drawer home.",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey,
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _circularIcon(Icons.thumb_up),
-                  _circularIcon(Icons.flag),
-                  _circularIcon(Icons.star),
-                  _circularIcon(Icons.shop),
-                ],
+              CircularIcons(
+                icons: [Icons.thumb_up, Icons.star, Icons.share, Icons.comment],
               )
             ],
           ))
@@ -46,11 +41,4 @@ class Home extends StatelessWidget {
       ),
     );
   }
-
-  _circularIcon(IconData data) => Container(
-        margin: EdgeInsets.only(left: 8),
-        child: CircleAvatar(
-          child: Icon(data),
-        ),
-      );
 }
