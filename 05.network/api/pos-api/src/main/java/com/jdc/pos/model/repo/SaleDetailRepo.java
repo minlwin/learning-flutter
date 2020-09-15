@@ -1,5 +1,9 @@
 package com.jdc.pos.model.repo;
 
-public interface SaleDetailRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.jdc.pos.model.entity.SaleDetails;
+
+public interface SaleDetailRepo extends JpaRepository<SaleDetails, Integer>{
 
 }
