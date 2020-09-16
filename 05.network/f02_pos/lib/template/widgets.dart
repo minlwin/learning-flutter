@@ -1,0 +1,105 @@
+import 'package:flutter/material.dart';
+
+class Line extends StatelessWidget {
+  final double height;
+  final Color color;
+
+  const Line({Key key, this.height, this.color}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: null == height ? 1 : height,
+      color: null == color ? Colors.black : color,
+    );
+  }
+}
+
+class FormBtn extends StatelessWidget {
+  final Function actionListener;
+  final String name;
+
+  const FormBtn({Key key, this.actionListener, this.name = "Save"})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 80,
+      padding: EdgeInsets.only(top: 32),
+      child: RaisedButton(
+        onPressed: actionListener,
+        child: Text(name),
+        color: Colors.green[200],
+      ),
+    );
+  }
+}
+
+class EditForm extends StatelessWidget {
+  final Form form;
+  final IconData icon;
+  final Function actionListener;
+  final String formName;
+
+  const EditForm(this.actionListener,
+      {Key key, this.form, this.icon, this.formName})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: 160,
+          height: 160,
+          child: CircleAvatar(
+            backgroundColor: Colors.green[300],
+            foregroundColor: Colors.white,
+            child: Icon(
+              icon,
+              size: 80,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 36),
+          child: Text(
+            "Add $formName",
+            style: Theme.of(context).textTheme.headline4,
+          ),
+        ),
+        form,
+        FormBtn(
+          actionListener: actionListener,
+        )
+      ],
+    );
+  }
+}
+
+class EditFormTextField extends StatelessWidget {
+  final TextEditingController controller;
+  final String name;
+
+  const EditFormTextField(this.name, this.controller, {Key key})
+      : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: controller,
+      validator: (value) {
+        if (value.isEmpty) {
+          return "Please enter $name";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: name,
+        hintText: 'Enter $name',
+        border: OutlineInputBorder(),
+      ),
+    );
+  }
+}

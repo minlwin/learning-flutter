@@ -7,11 +7,16 @@ import 'package:http/http.dart' as http;
 const API = "$BASE_API/products";
 
 class ProductApi {
-  Future<List<Product>> search(int category, String name) async {
-    var uri = Uri.http(BASE_API, "/products",
+  Future<List<Product>> search({int category, String name = ""}) async {
+    var uri = Uri.http(BASE_HOST, "/products",
         {'category': category?.toString(), 'name': name});
     var response = await http.get(uri);
     return productFromJson(response.body);
+  }
+
+  Future<int> count() async {
+    var value = await http.get("$API/count");
+    return json.decode(value.body);
   }
 
   Future<Product> findById(int id) async {

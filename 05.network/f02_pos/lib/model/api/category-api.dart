@@ -12,18 +12,27 @@ class CategoryApi {
     return categoryFromJson(value.body);
   }
 
+  Future<int> count() async {
+    var value = await http.get("$API/count");
+    return json.decode(value.body);
+  }
+
   Future<Category> findById(int id) async {
     var value = await http.get("$API/$id");
     return Category.fromJson(json.decode(value.body));
   }
 
   Future<Category> create(Category c) async {
-    var value = await http.post(API, body: c.toJson());
+    var value = await http.post(API, body: json.encode(c.toJson()), headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+    });
     return Category.fromJson(json.decode(value.body));
   }
 
   Future<Category> update(Category c) async {
-    var value = await http.put(API, body: c.toJson());
+    var value = await http.put(API, body: json.encode(c.toJson()), headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+    });
     return Category.fromJson(json.decode(value.body));
   }
 }

@@ -27,6 +27,11 @@ public class CategoryApi {
 		return service.findAll();
 	}
 	
+	@GetMapping("count")
+	public long count() {
+		return service.count();
+	}
+	
 	@GetMapping("{id}")
 	public Category findById(@PathVariable int id) {
 		return service.findById(id);

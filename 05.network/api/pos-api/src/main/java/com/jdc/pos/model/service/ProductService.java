@@ -52,4 +52,8 @@ public class ProductService {
 	public Product findById(int id) {
 		return repo.findById(id).orElseThrow();
 	}
+
+	public long count() {
+		return repo.count();
+	}
 }

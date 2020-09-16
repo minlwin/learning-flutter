@@ -1,12 +1,12 @@
 import 'package:f02_pos/template/template.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
-  static final String navigationId = "/";
+class SaleReport extends StatelessWidget {
+  static final String navigationId = "/reports";
   @override
   Widget build(BuildContext context) {
     return TemplateWithDrawer(
-      title: "Mini POS",
+      title: "Sale Report",
       body: Container(),
     );
   }

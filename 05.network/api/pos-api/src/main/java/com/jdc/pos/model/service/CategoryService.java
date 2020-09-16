@@ -25,4 +25,8 @@ public class CategoryService {
 	public Category save(Category category) {
 		return repo.save(category);
 	}
+
+	public long count() {
+		return repo.count();
+	}
 }

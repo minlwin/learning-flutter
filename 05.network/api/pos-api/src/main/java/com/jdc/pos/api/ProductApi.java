@@ -29,6 +29,11 @@ public class ProductApi {
 		return service.search(category, name);
 	}
 	
+	@GetMapping("count")
+	public long count() {
+		return service.count();
+	}
+	
 	@GetMapping("{id}")
 	public Product findById(@PathVariable int id) {
 		return service.findById(id);
