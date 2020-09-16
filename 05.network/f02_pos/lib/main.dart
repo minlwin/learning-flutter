@@ -2,8 +2,6 @@ import 'package:f02_pos/views/home.dart';
 import 'package:f02_pos/views/sales/cash-flow.dart';
 import 'package:f02_pos/views/sales/sale-report.dart';
 import 'package:f02_pos/views/sales/scan-to-sell.dart';
-import 'package:f02_pos/views/settings/master/category-edit.dart';
-import 'package:f02_pos/views/settings/master/product-edit.dart';
 import 'package:f02_pos/views/settings/master/products.dart';
 import 'package:f02_pos/views/settings/my-shop.dart';
 import 'package:f02_pos/views/settings/profile.dart';
@@ -37,8 +35,6 @@ class MyApp extends StatelessWidget {
     MyShop.navigationId: (_) => MyShop(),
     AboutMe.navigationId: (_) => AboutMe(),
     Settings.navigationId: (_) => Settings(),
-    CategoryEdit.navigationId: (_) => CategoryEdit(),
     Products.navigationId: (_) => Products(),
-    ProductEdit.navigationId: (_) => ProductEdit(),
   };
 }

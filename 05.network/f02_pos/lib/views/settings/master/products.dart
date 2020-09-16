@@ -15,23 +15,33 @@ class _ProductsState extends State<Products> {
   Future<List<Product>> _future;
   Category _category;
 
-  @override
-  Widget build(BuildContext context) {
-    _category = ModalRoute.of(context).settings.arguments;
-
+  _loadData() {
     setState(() {
       _future = ProductApi().search(category: _category.id);
     });
+  }
 
+  _addNew() async {
+    await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProductEdit(
+            category: _category,
+          ),
+        ));
+    _loadData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _category = ModalRoute.of(context).settings.arguments;
+    _loadData();
     return Scaffold(
       appBar: AppBar(
         title: Text(_category.name),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, ProductEdit.navigationId,
-              arguments: _category);
-        },
+        onPressed: _addNew,
         child: Icon(Icons.add),
       ),
       body: Padding(

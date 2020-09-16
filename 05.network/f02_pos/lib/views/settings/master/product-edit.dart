@@ -2,73 +2,54 @@ import 'package:f02_pos/model/api/product-api.dart';
 import 'package:f02_pos/model/dto/category.dart';
 import 'package:f02_pos/model/dto/product.dart';
 import 'package:f02_pos/template/widgets.dart';
-import 'package:f02_pos/views/settings/master/products.dart';
 import 'package:flutter/material.dart';
 
 class ProductEdit extends StatefulWidget {
-  static final String navigationId = "/product-edit";
+  final Category category;
+  const ProductEdit({Key key, this.category}) : super(key: key);
   @override
   _ProductEditState createState() => _ProductEditState();
 }
 
 class _ProductEditState extends State<ProductEdit> {
-  Category _category;
   var _formState = GlobalKey<FormState>();
   var _name = TextEditingController();
   var _price = TextEditingController();
 
-  Future _future;
-
   @override
   Widget build(BuildContext context) {
-    _category = ModalRoute.of(context).settings.arguments;
     return Scaffold(
         appBar: AppBar(
-          title: Text("Add to ${_category.name}"),
+          title: Text("Add to ${widget.category.name}"),
         ),
-        body: (null == _future)
-            ? Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 36),
-                child: EditForm(
-                  _save,
-                  icon: Icons.local_mall,
-                  formName: "Product",
-                  form: Form(
-                      key: _formState,
-                      child: Column(
-                        children: [
-                          EditFormTextField("Name", _name),
-                          Container(
-                            height: 24,
-                          ),
-                          EditFormTextField("Price", _price),
-                        ],
-                      )),
-                ),
-              )
-            : FutureBuilder(
-                future: _future,
-                builder: (context, snapshot) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                },
-              ));
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 36),
+          child: EditForm(
+            _save,
+            icon: Icons.local_mall,
+            formName: "Product",
+            form: Form(
+                key: _formState,
+                child: Column(
+                  children: [
+                    EditFormTextField("Name", _name),
+                    Container(
+                      height: 24,
+                    ),
+                    EditFormTextField("Price", _price),
+                  ],
+                )),
+          ),
+        ));
   }
 
-  _save() {
+  _save() async {
     if (_formState.currentState.validate()) {
-      setState(() {
-        var api = ProductApi();
-        api
-            .create(Product(
-                category: _category,
-                name: _name.text,
-                price: int.parse(_price.text)))
-            .whenComplete(() => Navigator.popAndPushNamed(
-                context, Products.navigationId,
-                arguments: _category));
-      });
+      final Product result = await ProductApi().create(Product(
+          category: widget.category,
+          name: _name.text,
+          price: int.parse(_price.text)));
+      Navigator.pop(context, result);
     }
   }
 }

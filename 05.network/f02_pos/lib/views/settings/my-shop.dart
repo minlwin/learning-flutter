@@ -24,7 +24,10 @@ class _MyShopState extends State<MyShop> {
   @override
   void initState() {
     super.initState();
+    _loadData();
+  }
 
+  _loadData() {
     setState(() {
       _fetchCategorySize = _categoryApi.count();
       _fetchProductSize = _productApi.count();
@@ -32,14 +35,21 @@ class _MyShopState extends State<MyShop> {
     });
   }
 
+  _addNew() async {
+    await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => CategoryEdit(),
+        ));
+    _loadData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return TemplateWithDrawer(
       title: "My Shop",
       action: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed(CategoryEdit.navigationId);
-        },
+        onPressed: _addNew,
         child: Icon(Icons.add),
       ),
       body: Column(
