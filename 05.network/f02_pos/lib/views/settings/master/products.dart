@@ -13,23 +13,24 @@ class Products extends StatefulWidget {
 
 class _ProductsState extends State<Products> {
   Future<List<Product>> _future;
+  Category _category;
 
   @override
   Widget build(BuildContext context) {
-    Category category = ModalRoute.of(context).settings.arguments;
+    _category = ModalRoute.of(context).settings.arguments;
 
     setState(() {
-      _future = ProductApi().search(category: category.id);
+      _future = ProductApi().search(category: _category.id);
     });
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(category.name),
+        title: Text(_category.name),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, ProductEdit.navigationId,
-              arguments: category);
+              arguments: _category);
         },
         child: Icon(Icons.add),
       ),
@@ -40,21 +41,7 @@ class _ProductsState extends State<Products> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               List<Product> list = snapshot.data;
-              return ListView.builder(
-                itemCount: list.length,
-                itemBuilder: (context, index) => Card(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(),
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        child:
-                            Text(category.name.substring(0, 1).toUpperCase()),
-                      ),
-                      title: Text(list[index].name),
-                    ),
-                  ),
-                ),
-              );
+              return _list(list);
             }
 
             if (snapshot.hasError) {
@@ -72,4 +59,27 @@ class _ProductsState extends State<Products> {
       ),
     );
   }
+
+  _list(List<Product> list) => ListView.builder(
+        itemCount: list.length,
+        itemBuilder: (context, index) => Card(
+          child: Padding(
+            padding: EdgeInsets.symmetric(),
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundColor: Colors.green[100],
+                foregroundColor: Colors.red[900],
+                child: Text(
+                  _category.name.substring(0, 1).toUpperCase(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              title: Text(list[index].name),
+              subtitle: Text(list[index].price.toString()),
+            ),
+          ),
+        ),
+      );
 }

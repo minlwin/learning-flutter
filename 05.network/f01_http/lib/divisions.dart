@@ -28,7 +28,7 @@ class _DivisionsState extends State<Divisions> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<Division> list = snapshot.data;
-            return _divisions(context, list);
+            return _divisions(list);
           }
 
           if (snapshot.hasError) {
@@ -40,7 +40,7 @@ class _DivisionsState extends State<Divisions> {
     );
   }
 
-  _divisions(BuildContext context, List<Division> list) => ListView.builder(
+  _divisions(List<Division> list) => ListView.builder(
         itemBuilder: (_, i) => Card(
           child: GestureDetector(
             onTap: () {

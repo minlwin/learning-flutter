@@ -25,12 +25,18 @@ class ProductApi {
   }
 
   Future<Product> create(Product p) async {
-    var response = await http.post(API, body: p.toJson());
+    var response =
+        await http.post(API, body: json.encode(p.toJson()), headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+    });
     return Product.fromJson(json.decode(response.body));
   }
 
   Future<Product> update(Product p) async {
-    var response = await http.post(API, body: p.toJson());
+    var response =
+        await http.post(API, body: json.encode(p.toJson()), headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+    });
     return Product.fromJson(json.decode(response.body));
   }
 }

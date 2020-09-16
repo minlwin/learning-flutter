@@ -18,18 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {
-        Home.navigationId: (_) => Home(),
-        ScanToSell.navigationId: (_) => ScanToSell(),
-        CashFlow.navigationId: (_) => CashFlow(),
-        SaleReport.navigationId: (_) => SaleReport(),
-        MyShop.navigationId: (_) => MyShop(),
-        AboutMe.navigationId: (_) => AboutMe(),
-        Settings.navigationId: (_) => Settings(),
-        CategoryEdit.navigationId: (_) => CategoryEdit(),
-        Products.navigationId: (_) => Products(),
-        ProductEdit.navigationId: (_) => ProductEdit(),
-      },
+      routes: _routes,
       initialRoute: Home.navigationId,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -39,4 +28,17 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+
+  final Map<String, Widget Function(BuildContext)> _routes = {
+    Home.navigationId: (_) => Home(),
+    ScanToSell.navigationId: (_) => ScanToSell(),
+    CashFlow.navigationId: (_) => CashFlow(),
+    SaleReport.navigationId: (_) => SaleReport(),
+    MyShop.navigationId: (_) => MyShop(),
+    AboutMe.navigationId: (_) => AboutMe(),
+    Settings.navigationId: (_) => Settings(),
+    CategoryEdit.navigationId: (_) => CategoryEdit(),
+    Products.navigationId: (_) => Products(),
+    ProductEdit.navigationId: (_) => ProductEdit(),
+  };
 }

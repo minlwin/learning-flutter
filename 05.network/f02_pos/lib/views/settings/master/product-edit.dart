@@ -1,5 +1,8 @@
+import 'package:f02_pos/model/api/product-api.dart';
 import 'package:f02_pos/model/dto/category.dart';
+import 'package:f02_pos/model/dto/product.dart';
 import 'package:f02_pos/template/widgets.dart';
+import 'package:f02_pos/views/settings/master/products.dart';
 import 'package:flutter/material.dart';
 
 class ProductEdit extends StatefulWidget {
@@ -25,8 +28,7 @@ class _ProductEditState extends State<ProductEdit> {
         ),
         body: (null == _future)
             ? Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 36, vertical: 90),
+                padding: const EdgeInsets.symmetric(horizontal: 36),
                 child: EditForm(
                   _save,
                   icon: Icons.local_mall,
@@ -55,6 +57,18 @@ class _ProductEditState extends State<ProductEdit> {
   }
 
   _save() {
-    if (_formState.currentState.validate()) {}
+    if (_formState.currentState.validate()) {
+      setState(() {
+        var api = ProductApi();
+        api
+            .create(Product(
+                category: _category,
+                name: _name.text,
+                price: int.parse(_price.text)))
+            .whenComplete(() => Navigator.popAndPushNamed(
+                context, Products.navigationId,
+                arguments: _category));
+      });
+    }
   }
 }
