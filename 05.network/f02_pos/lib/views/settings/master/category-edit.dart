@@ -15,10 +15,7 @@ class _CategoryEditState extends State<CategoryEdit> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () {
-        print("Popback");
-        return Future.delayed(Duration(microseconds: 1), () => true);
-      },
+      onWillPop: _confirm,
       child: Scaffold(
         appBar: AppBar(
           title: Text("Add Category"),
@@ -47,4 +44,7 @@ class _CategoryEditState extends State<CategoryEdit> {
       Navigator.pop(context, result);
     }
   }
+
+  Future<bool> _confirm() async =>
+      showDialog(context: context, builder: (context) => Really()) ?? false;
 }

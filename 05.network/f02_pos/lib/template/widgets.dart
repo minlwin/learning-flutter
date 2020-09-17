@@ -104,3 +104,27 @@ class EditFormTextField extends StatelessWidget {
     );
   }
 }
+
+class Really extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text("Really?"),
+      content: Text("You are in editing. Do you really want to back?"),
+      actions: [
+        RaisedButton(
+          onPressed: () {
+            Navigator.pop(context, true);
+          },
+          child: Text("Yes"),
+        ),
+        RaisedButton(
+          onPressed: () {
+            Navigator.pop(context, false);
+          },
+          child: Text("No"),
+        )
+      ],
+    );
+  }
+}

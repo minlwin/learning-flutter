@@ -18,29 +18,32 @@ class _ProductEditState extends State<ProductEdit> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Add to ${widget.category.name}"),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 36),
-          child: EditForm(
-            _save,
-            icon: Icons.local_mall,
-            formName: "Product",
-            form: Form(
-                key: _formState,
-                child: Column(
-                  children: [
-                    EditFormTextField("Name", _name),
-                    Container(
-                      height: 24,
-                    ),
-                    EditFormTextField("Price", _price),
-                  ],
-                )),
+    return WillPopScope(
+      onWillPop: _confirm,
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text("Add to ${widget.category.name}"),
           ),
-        ));
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 36),
+            child: EditForm(
+              _save,
+              icon: Icons.local_mall,
+              formName: "Product",
+              form: Form(
+                  key: _formState,
+                  child: Column(
+                    children: [
+                      EditFormTextField("Name", _name),
+                      Container(
+                        height: 24,
+                      ),
+                      EditFormTextField("Price", _price),
+                    ],
+                  )),
+            ),
+          )),
+    );
   }
 
   _save() async {
@@ -52,4 +55,7 @@ class _ProductEditState extends State<ProductEdit> {
       Navigator.pop(context, result);
     }
   }
+
+  Future<bool> _confirm() async =>
+      showDialog(context: context, builder: (context) => Really()) ?? false;
 }
