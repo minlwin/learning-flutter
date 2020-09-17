@@ -11,9 +11,16 @@ class CategoryEdit extends StatefulWidget {
 class _CategoryEditState extends State<CategoryEdit> {
   final _formState = GlobalKey<FormState>();
   final _name = TextEditingController();
+  Category _category;
 
   @override
   Widget build(BuildContext context) {
+    _category = ModalRoute.of(context).settings.arguments;
+
+    if (null != _category) {
+      _name.text = _category.name;
+    }
+
     return WillPopScope(
       onWillPop: _confirm,
       child: Scaffold(
@@ -38,9 +45,9 @@ class _CategoryEditState extends State<CategoryEdit> {
 
   _save() async {
     if (_formState.currentState.validate()) {
-      final Category result = await CategoryApi().create(Category(
-        name: _name.text,
-      ));
+      Category c = _category ?? Category();
+      c.name = _name.text;
+      final Category result = await CategoryApi().create(c);
       Navigator.pop(context, result);
     }
   }

@@ -1,6 +1,7 @@
 import 'package:f02_pos/model/api/product-api.dart';
 import 'package:f02_pos/model/dto/category.dart';
 import 'package:f02_pos/model/dto/product.dart';
+import 'package:f02_pos/views/settings/master/category-edit.dart';
 import 'package:f02_pos/views/settings/master/product-edit.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +33,15 @@ class _ProductsState extends State<Products> {
     _loadData();
   }
 
+  _editCategory() async {
+    await Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => CategoryEdit(),
+            settings: RouteSettings(arguments: _category)));
+    _loadData();
+  }
+
   @override
   Widget build(BuildContext context) {
     _category = ModalRoute.of(context).settings.arguments;
@@ -39,6 +49,15 @@ class _ProductsState extends State<Products> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_category.name),
+        actions: [
+          GestureDetector(
+            onTap: _editCategory,
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Icon(Icons.edit),
+            ),
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addNew,
