@@ -12,6 +12,7 @@ class _CategoryEditState extends State<CategoryEdit> {
   final _formState = GlobalKey<FormState>();
   final _name = TextEditingController();
   Category _category;
+  String _title = "Add Category";
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +20,14 @@ class _CategoryEditState extends State<CategoryEdit> {
 
     if (null != _category) {
       _name.text = _category.name;
+      _title = "Edit Category";
     }
 
     return WillPopScope(
       onWillPop: _confirm,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Add Category"),
+          title: Text(_title),
         ),
         body: Container(
           padding: EdgeInsets.symmetric(horizontal: 36, vertical: 108),
@@ -47,7 +49,7 @@ class _CategoryEditState extends State<CategoryEdit> {
     if (_formState.currentState.validate()) {
       Category c = _category ?? Category();
       c.name = _name.text;
-      final Category result = await CategoryApi().create(c);
+      final Category result = await CategoryApi().save(c);
       Navigator.pop(context, result);
     }
   }

@@ -24,7 +24,11 @@ class ProductApi {
     return Product.fromJson(json.decode(response.body));
   }
 
-  Future<Product> create(Product p) async {
+  Future<Product> save(Product p) async {
+    return p.id == null ? _create(p) : _update(p);
+  }
+
+  Future<Product> _create(Product p) async {
     var response =
         await http.post(API, body: json.encode(p.toJson()), headers: {
       'Content-Type': 'application/json; charset=UTF-8',
@@ -32,7 +36,7 @@ class ProductApi {
     return Product.fromJson(json.decode(response.body));
   }
 
-  Future<Product> update(Product p) async {
+  Future<Product> _update(Product p) async {
     var response =
         await http.post(API, body: json.encode(p.toJson()), headers: {
       'Content-Type': 'application/json; charset=UTF-8',

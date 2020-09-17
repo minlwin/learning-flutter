@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 
 class ProductEdit extends StatefulWidget {
   final Category category;
-  const ProductEdit({Key key, this.category}) : super(key: key);
+  final Product product;
+  const ProductEdit({Key key, this.category, this.product}) : super(key: key);
   @override
   _ProductEditState createState() => _ProductEditState();
 }
@@ -15,6 +16,17 @@ class _ProductEditState extends State<ProductEdit> {
   var _formState = GlobalKey<FormState>();
   var _name = TextEditingController();
   var _price = TextEditingController();
+  var _title = "Add New Product";
+
+  @override
+  void initState() {
+    super.initState();
+    if (null != widget.product) {
+      _name.text = widget.product.name;
+      _price.text = widget.product.price.toString();
+      _title = "Edit Product";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +34,7 @@ class _ProductEditState extends State<ProductEdit> {
       onWillPop: _confirm,
       child: Scaffold(
           appBar: AppBar(
-            title: Text("Add to ${widget.category.name}"),
+            title: Text(_title),
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 36),
@@ -48,10 +60,13 @@ class _ProductEditState extends State<ProductEdit> {
 
   _save() async {
     if (_formState.currentState.validate()) {
-      final Product result = await ProductApi().create(Product(
-          category: widget.category,
-          name: _name.text,
-          price: int.parse(_price.text)));
+      Product p = widget.product != null
+          ? widget.product
+          : Product(category: widget.category);
+      p.name = _name.text;
+      p.price = int.parse(_price.text);
+
+      final Product result = await ProductApi().save(p);
       Navigator.pop(context, result);
     }
   }

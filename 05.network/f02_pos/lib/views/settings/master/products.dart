@@ -33,6 +33,18 @@ class _ProductsState extends State<Products> {
     _loadData();
   }
 
+  _editProduct(Product p) async {
+    await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProductEdit(
+            product: p,
+            category: p.category,
+          ),
+        ));
+    _loadData();
+  }
+
   _editCategory() async {
     await Navigator.push(
         context,
@@ -94,19 +106,24 @@ class _ProductsState extends State<Products> {
         itemBuilder: (context, index) => Card(
           child: Padding(
             padding: EdgeInsets.symmetric(),
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundColor: Colors.green[100],
-                foregroundColor: Colors.red[900],
-                child: Text(
-                  _category.name.substring(0, 1).toUpperCase(),
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+            child: GestureDetector(
+              onTap: () {
+                _editProduct(list[index]);
+              },
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: Colors.green[100],
+                  foregroundColor: Colors.red[900],
+                  child: Text(
+                    _category.name.substring(0, 1).toUpperCase(),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
+                title: Text(list[index].name),
+                subtitle: Text(list[index].price.toString()),
               ),
-              title: Text(list[index].name),
-              subtitle: Text(list[index].price.toString()),
             ),
           ),
         ),

@@ -22,14 +22,18 @@ class CategoryApi {
     return Category.fromJson(json.decode(value.body));
   }
 
-  Future<Category> create(Category c) async {
+  Future<Category> save(Category c) async {
+    return c.id == null ? _create(c) : _update(c);
+  }
+
+  Future<Category> _create(Category c) async {
     var value = await http.post(API, body: json.encode(c.toJson()), headers: {
       'Content-Type': 'application/json; charset=UTF-8',
     });
     return Category.fromJson(json.decode(value.body));
   }
 
-  Future<Category> update(Category c) async {
+  Future<Category> _update(Category c) async {
     var value = await http.put(API, body: json.encode(c.toJson()), headers: {
       'Content-Type': 'application/json; charset=UTF-8',
     });
