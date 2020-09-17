@@ -44,6 +44,11 @@ class _MyShopState extends State<MyShop> {
     _loadData();
   }
 
+  _showProducts(Category c) async {
+    await Navigator.pushNamed(context, Products.navigationId, arguments: c);
+    _loadData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return TemplateWithDrawer(
@@ -113,8 +118,7 @@ class _MyShopState extends State<MyShop> {
                       return ListView.builder(
                         itemBuilder: (context, index) => GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, Products.navigationId,
-                                arguments: list[index]);
+                            _showProducts(list[index]);
                           },
                           child: Card(
                             child: Padding(
