@@ -1,3 +1,18 @@
 # Learning Flutter
 
-This is the repository that I'd learn Flutter from Zero. I love to write Flutter. This framework is designed to write Mobile App. 
+ဒီ Repository ကတော့ ကျွန်တော် Flutter ကို လေ့လာတဲ့ နေရာမှာ သိချင်တာလေးတွေကိို ရေးပြီးစမ်းသပ်ခဲ့တဲ့ Code Repository ဖြစ်ပါတယ်။ လေ့လာတဲ ့နေရာမှာ ပရိုဂျက်တစ်ခုကို ရေးတယ်။ ပြီးတဲ့နောက်လိုအပ်တယ်လို့ ထင်တဲ့အခါ စမ်းသပ်လိုတဲ့ အစိတ်အပိုင်းတွေကို ပရိုဂျက်လေးတစ်ခုစီနဲ့ စမ်းသပ်လေ့လာသွားမှာ ဖြစ်ပါတယ်။ 
+
+## Basic
+ဒီနေရာကတော့ အခြေခံသိသင့်သိထိုက်တာတွေကို စမ်းသပ်ထားတဲ့ နေရာဖြစ်ပါတယ်။ Widget တွေနဲ့ Layout ကို သတ်မှတ်ထားတဲ့ Widget တွေကို စမ်းသပ်ထားတာ အများအပြားရှိိပါမယ်။ 
+
+## Routing
+
+## Form
+
+## Storages
+
+## Networking
+
+## Transitions
+
+## Slivers
