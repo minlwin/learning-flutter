@@ -15,16 +15,16 @@ User Input တွေကိုလက်ခံဖို့ အဓိက Widget တ
 <table>
   <tr>
     <td>
-      <img src="images/basic-input.png" width="300" />
       <h3>Basic<h3>
+      <img src="images/basic-input.png" width="300" />
     </td>
     <td>
-      <img src="images/filled-input.png" width="300" />
       <h3>Filled<h3>
+      <img src="images/filled-input.png" width="300" />
     </td>
     <td>
-      <img src="images/outline-input.png" width="300" />
       <h3>Outline<h3>
+      <img src="images/outline-input.png" width="300" />
     </td>
   </tr>
 </table>
