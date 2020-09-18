@@ -15,9 +15,73 @@
 
 User Input တွေကိုလက်ခံဖို့ အဓိက Widget တစ်ခုကတော့ TextFormField ဖြစ်ပါတယ်။ 
 
+### Basic Input Field
+
+![Basic Input Field](./images/basic-input.png)
+
 ```
-TextFormField(
-    decoration: InputDecoration(labelText: "Name"),
-    keyboardType: TextInputType.name,
-)
+class BasicInput extends StatelessWidget {
+  final String label;
+  final TextInputType inputType;
+  final bool hidePass;
+  const BasicInput(
+      {Key key,
+      @required this.label,
+      this.inputType = TextInputType.name,
+      this.hidePass = false})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: InputDecoration(labelText: label),
+      keyboardType: inputType,
+      obscureText: hidePass,
+    );
+  }
+}
+```
+TextFormField ထဲမှာ Label ကို သတ်မှတ်ရေးသားလိုတယ်ဆိုရင် အထက်ပါအတိုင်း decoration မှာ InputDecoration ကို ရေးသားရပြီး labelText တန်ဖိုးမှာ ရေးသားလိုတဲ့ Text ကို ရေးသားရမှာ ဖြစ်ပါတယ်။ တဖန် Input Method ကိုသတ်မှတ်လိုတဲ့ အခါမှာ TextFormField  ရဲ့ keyboardType နဲ့ သတ်မှတ်ရေးသားနိုင်မှာ ဖြစ်ပါတယ်။
+
+### Filled Box Input Field
+
+![Basic Input Field](./images/filled-input.png)
+
+```
+class FilledBoxInput extends StatelessWidget {
+  final String label;
+  final TextInputType inputType;
+  final bool hidePass;
+  final Color filledColor;
+  final double borderRadius;
+
+  const FilledBoxInput({
+    Key key,
+    @required this.label,
+    @required this.filledColor,
+    this.borderRadius = 8,
+    this.inputType = TextInputType.name,
+    this.hidePass = false,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: filledColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(borderRadius),
+          topRight: Radius.circular(borderRadius),
+        ),
+      ),
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: label,
+          contentPadding: EdgeInsets.all(8),
+        ),
+        keyboardType: TextInputType.name,
+      ),
+    );
+  }
+}
 ```
