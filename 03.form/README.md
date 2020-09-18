@@ -17,7 +17,7 @@ User Input တွေကိုလက်ခံဖို့ အဓိက Widget တ
 
 ### Basic Input Field
 
-<img src="./images/basic-input.png" style="width:40%"/>
+![Basic Box](images/basic-input.png){width="50%"}
 
 ```
 class BasicInput extends StatelessWidget {
@@ -44,7 +44,7 @@ class BasicInput extends StatelessWidget {
 
 ### Filled Box Input Field
 
-<img src="./images/filled-input.png" style="width: 40%" />
+![Filled Box](images/filled-input.png){width="50%"}
 
 ```
 class FilledBoxInput extends StatelessWidget {
@@ -89,7 +89,7 @@ class FilledBoxInput extends StatelessWidget {
 
 ### Outline Box Input Field
 
-![Basic Input Field](./images/outline-input.png)
+![Outline Box](images/outline-input.png){width="50%"}
 
 ```
 class OutlineBoxInput extends StatelessWidget {
