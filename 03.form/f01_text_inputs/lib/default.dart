@@ -1,3 +1,4 @@
+import 'package:f01_text_inputs/widgets.dart';
 import 'package:flutter/material.dart';
 
 class DefaultInputs extends StatelessWidget {
@@ -7,18 +8,9 @@ class DefaultInputs extends StatelessWidget {
       padding: EdgeInsets.all(24),
       child: Column(
         children: [
-          TextFormField(
-            decoration: InputDecoration(labelText: "Name"),
-            keyboardType: TextInputType.name,
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "Password"),
-            obscureText: true,
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "Phone"),
-            keyboardType: TextInputType.phone,
-          ),
+          BasicInput(label: "Name"),
+          BasicInput(label: "Password", hidePass: true),
+          BasicInput(label: "Phone", inputType: TextInputType.phone),
         ],
       ),
     );
