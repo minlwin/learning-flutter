@@ -13,11 +13,12 @@
 
 ## Text Input Field
 
+
 User Input တွေကိုလက်ခံဖို့ အဓိက Widget တစ်ခုကတော့ TextFormField ဖြစ်ပါတယ်။ 
 
 ### Basic Input Field
 
-![Basic Box](images/basic-input.png){width="50%"}
+<img src="images/basic-input.png" width="300" />
 
 ```
 class BasicInput extends StatelessWidget {
@@ -44,7 +45,7 @@ class BasicInput extends StatelessWidget {
 
 ### Filled Box Input Field
 
-![Filled Box](images/filled-input.png){width="50%"}
+<img src="images/filled-input.png" width="300" />
 
 ```
 class FilledBoxInput extends StatelessWidget {
@@ -89,7 +90,7 @@ class FilledBoxInput extends StatelessWidget {
 
 ### Outline Box Input Field
 
-![Outline Box](images/outline-input.png){width="50%"}
+<img src="images/outline-input.png" width="300" />
 
 ```
 class OutlineBoxInput extends StatelessWidget {
