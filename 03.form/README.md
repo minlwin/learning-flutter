@@ -41,7 +41,6 @@ class BasicInput extends StatelessWidget {
   }
 }
 ```
-TextFormField ထဲမှာ Label ကို သတ်မှတ်ရေးသားလိုတယ်ဆိုရင် အထက်ပါအတိုင်း decoration မှာ InputDecoration ကို ရေးသားရပြီး labelText တန်ဖိုးမှာ ရေးသားလိုတဲ့ Text ကို ရေးသားရမှာ ဖြစ်ပါတယ်။ တဖန် Input Method ကိုသတ်မှတ်လိုတဲ့ အခါမှာ TextFormField  ရဲ့ keyboardType နဲ့ သတ်မှတ်ရေးသားနိုင်မှာ ဖြစ်ပါတယ်။
 
 ### Filled Box Input Field
 
@@ -67,6 +66,7 @@ class FilledBoxInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
         color: filledColor,
         borderRadius: BorderRadius.only(
@@ -80,6 +80,41 @@ class FilledBoxInput extends StatelessWidget {
           contentPadding: EdgeInsets.all(8),
         ),
         keyboardType: TextInputType.name,
+        obscureText: hidePass,
+      ),
+    );
+  }
+}
+```
+
+### Outline Box Input Field
+
+![Basic Input Field](./images/outline-input.png)
+
+```
+class OutlineBoxInput extends StatelessWidget {
+  final String label;
+  final TextInputType inputType;
+  final bool hidePass;
+
+  const OutlineBoxInput({
+    Key key,
+    @required this.label,
+    this.inputType = TextInputType.name,
+    this.hidePass = false,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 8),
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: label,
+          border: OutlineInputBorder(),
+        ),
+        keyboardType: inputType,
+        obscureText: hidePass,
       ),
     );
   }
