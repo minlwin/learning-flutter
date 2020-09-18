@@ -33,5 +33,20 @@ class ShoppingCart extends ChangeNotifier {
     notifyListeners();
   }
 
+  clear() {
+    cart.clear();
+    notifyListeners();
+  }
+
+  List<MapEntry<Product, int>> get list => cart.entries.toList();
+
+  int get total {
+    int result = 0;
+    cart.forEach((key, value) {
+      result += (key.price * value);
+    });
+    return result;
+  }
+
   int get count => cart.values.fold(0, (a, b) => a + b);
 }

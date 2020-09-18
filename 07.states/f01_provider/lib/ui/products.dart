@@ -1,4 +1,5 @@
 import 'package:f01_provider/model/repository.dart';
+import 'package:f01_provider/ui/card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +22,13 @@ class Products extends StatelessWidget {
         title: Text("Using Provider"),
         actions: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartView(),
+                  ));
+            },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
