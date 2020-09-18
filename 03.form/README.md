@@ -10,3 +10,14 @@
 6. Select One Menu
 7. Select menu Object
 8. Auto Fill
+
+## Text Input Field
+
+User Input တွေကိုလက်ခံဖို့ အဓိက Widget တစ်ခုကတော့ TextFormField ဖြစ်ပါတယ်။ 
+
+```
+TextFormField(
+    decoration: InputDecoration(labelText: "Name"),
+    keyboardType: TextInputType.name,
+)
+```
