@@ -16,7 +16,7 @@ class _CategoryEditState extends State<CategoryEdit> {
 
   @override
   Widget build(BuildContext context) {
-    _category = ModalRoute.of(context).settings.arguments;
+    _category = CategoryHolder.of(context)?.data;
 
     if (null != _category) {
       _name.text = _category.name;

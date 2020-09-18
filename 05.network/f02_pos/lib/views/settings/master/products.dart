@@ -1,6 +1,6 @@
 import 'package:f02_pos/model/api/product-api.dart';
-import 'package:f02_pos/model/dto/category.dart';
 import 'package:f02_pos/model/dto/product.dart';
+import 'package:f02_pos/template/widgets.dart';
 import 'package:f02_pos/views/settings/master/category-edit.dart';
 import 'package:f02_pos/views/settings/master/product-edit.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +14,12 @@ class Products extends StatefulWidget {
 
 class _ProductsState extends State<Products> {
   Future<List<Product>> _future;
-  Category _category;
 
   _loadData() {
     setState(() {
-      _future = ProductApi().search(category: _category.id);
+      _future = ProductApi().search(
+        category: CategoryHolder.of(context).data.id,
+      );
     });
   }
 
@@ -26,9 +27,8 @@ class _ProductsState extends State<Products> {
     await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ProductEdit(
-            category: _category,
-          ),
+          builder: (context) => CategoryHolder(
+              data: CategoryHolder.of(this.context).data, child: ProductEdit()),
         ));
     _loadData();
   }
@@ -37,9 +37,9 @@ class _ProductsState extends State<Products> {
     await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ProductEdit(
-            product: p,
-            category: p.category,
+          builder: (context) => ProductHolder(
+            data: p,
+            child: ProductEdit(),
           ),
         ));
     _loadData();
@@ -49,18 +49,20 @@ class _ProductsState extends State<Products> {
     await Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => CategoryEdit(),
-            settings: RouteSettings(arguments: _category)));
+          builder: (context) => CategoryHolder(
+            data: CategoryHolder.of(this.context).data,
+            child: CategoryEdit(),
+          ),
+        ));
     _loadData();
   }
 
   @override
   Widget build(BuildContext context) {
-    _category = ModalRoute.of(context).settings.arguments;
     _loadData();
     return Scaffold(
       appBar: AppBar(
-        title: Text(_category.name),
+        title: Text(CategoryHolder.of(context).data.name),
         actions: [
           GestureDetector(
             onTap: _editCategory,
@@ -115,7 +117,11 @@ class _ProductsState extends State<Products> {
                   backgroundColor: Colors.green[100],
                   foregroundColor: Colors.red[900],
                   child: Text(
-                    _category.name.substring(0, 1).toUpperCase(),
+                    CategoryHolder.of(context)
+                        .data
+                        .name
+                        .substring(0, 1)
+                        .toUpperCase(),
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),

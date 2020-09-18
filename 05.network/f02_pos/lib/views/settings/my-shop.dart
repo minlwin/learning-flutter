@@ -2,6 +2,7 @@ import 'package:f02_pos/model/api/category-api.dart';
 import 'package:f02_pos/model/api/product-api.dart';
 import 'package:f02_pos/model/dto/category.dart';
 import 'package:f02_pos/template/template.dart';
+import 'package:f02_pos/template/widgets.dart';
 import 'package:f02_pos/views/settings/master/category-edit.dart';
 import 'package:f02_pos/views/settings/master/products.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,14 @@ class _MyShopState extends State<MyShop> {
   }
 
   _showProducts(Category c) async {
-    await Navigator.pushNamed(context, Products.navigationId, arguments: c);
+    await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CategoryHolder(
+            data: c,
+            child: Products(),
+          ),
+        ));
     _loadData();
   }
 

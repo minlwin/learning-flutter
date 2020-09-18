@@ -1,3 +1,5 @@
+import 'package:f02_pos/model/dto/category.dart';
+import 'package:f02_pos/model/dto/product.dart';
 import 'package:flutter/material.dart';
 
 class Line extends StatelessWidget {
@@ -127,4 +129,30 @@ class Really extends StatelessWidget {
       ],
     );
   }
+}
+
+class CategoryHolder extends InheritedWidget {
+  final Category data;
+
+  const CategoryHolder({Key key, @required this.data, @required Widget child})
+      : super(key: key, child: child);
+
+  @override
+  bool updateShouldNotify(CategoryHolder oldWidget) => data != oldWidget.data;
+
+  static CategoryHolder of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<CategoryHolder>();
+}
+
+class ProductHolder extends InheritedWidget {
+  final Product data;
+
+  const ProductHolder({Key key, @required this.data, @required Widget child})
+      : super(key: key, child: child);
+
+  @override
+  bool updateShouldNotify(ProductHolder oldWidget) => data != oldWidget.data;
+
+  static ProductHolder of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<ProductHolder>();
 }

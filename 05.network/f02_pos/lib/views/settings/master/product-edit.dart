@@ -1,13 +1,9 @@
 import 'package:f02_pos/model/api/product-api.dart';
-import 'package:f02_pos/model/dto/category.dart';
 import 'package:f02_pos/model/dto/product.dart';
 import 'package:f02_pos/template/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ProductEdit extends StatefulWidget {
-  final Category category;
-  final Product product;
-  const ProductEdit({Key key, this.category, this.product}) : super(key: key);
   @override
   _ProductEditState createState() => _ProductEditState();
 }
@@ -19,17 +15,13 @@ class _ProductEditState extends State<ProductEdit> {
   var _title = "Add New Product";
 
   @override
-  void initState() {
-    super.initState();
-    if (null != widget.product) {
-      _name.text = widget.product.name;
-      _price.text = widget.product.price.toString();
+  Widget build(BuildContext context) {
+    Product product = ProductHolder.of(context)?.data;
+    if (null != product) {
+      _name.text = product.name;
+      _price.text = product.price.toString();
       _title = "Edit Product";
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _confirm,
       child: Scaffold(
@@ -60,9 +52,8 @@ class _ProductEditState extends State<ProductEdit> {
 
   _save() async {
     if (_formState.currentState.validate()) {
-      Product p = widget.product != null
-          ? widget.product
-          : Product(category: widget.category);
+      Product p = ProductHolder.of(context)?.data ??
+          Product(category: CategoryHolder.of(context).data);
       p.name = _name.text;
       p.price = int.parse(_price.text);
 
