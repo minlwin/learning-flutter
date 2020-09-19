@@ -1,4 +1,4 @@
-## Text Input Field
+# Text Input Field
 
 User Input တွေကိုလက်ခံဖို့ အဓိက Widget တစ်ခုကတော့ TextFormField ဖြစ်ပါတယ်။ ဒီနေရာမှာတော့ TextFormField တွေရဲ့ Style ကို ဘယ်လို Customize လုပ်မယ်ဆိိုတာကို လေ့လာသွားကြပါမယ်။ 
 
@@ -6,20 +6,20 @@ User Input တွေကိုလက်ခံဖို့ အဓိက Widget တ
   <tr>
     <td>
       <h3>Basic<h3>
-      <img src="images/basic-input.png" width="300" />
+      <img src="../images/basic-input.png" width="300" />
     </td>
     <td>
       <h3>Filled<h3>
-      <img src="images/filled-input.png" width="300" />
+      <img src="../images/filled-input.png" width="300" />
     </td>
     <td>
       <h3>Outline<h3>
-      <img src="images/outline-input.png" width="300" />
+      <img src="../images/outline-input.png" width="300" />
     </td>
   </tr>
 </table>
 
-### Basic Input Field
+## Basic Input Field
 
 ```
 class BasicInput extends StatelessWidget {
@@ -44,7 +44,7 @@ class BasicInput extends StatelessWidget {
 }
 ```
 
-### Filled Box Input Field
+## Filled Box Input Field
 
 ```
 class FilledBoxInput extends StatelessWidget {
@@ -87,7 +87,7 @@ class FilledBoxInput extends StatelessWidget {
 }
 ```
 
-### Outline Box Input Field
+## Outline Box Input Field
 
 ```
 class OutlineBoxInput extends StatelessWidget {
