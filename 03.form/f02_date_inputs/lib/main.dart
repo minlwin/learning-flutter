@@ -1,4 +1,5 @@
-import 'package:f02_date_inputs/widget.dart';
+import 'package:f02_date_inputs/widget/date-input.dart';
+import 'package:f02_date_inputs/widget/time-input.dart';
 import 'package:flutter/material.dart';
 
 main(List<String> args) {
