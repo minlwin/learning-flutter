@@ -29,7 +29,8 @@ class DateInputForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        DateInputField.create(),
+        DateInputField(),
+        TimeInputField(),
       ],
     );
   }

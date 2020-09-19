@@ -1,46 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class DateInputField extends StatelessWidget {
-  final DateTime initialDate;
-  final DateTime firstDate;
-  final DateTime lastDate;
+class DateInputField extends StatefulWidget {
+  @override
+  _DateInputFieldState createState() => _DateInputFieldState();
+}
 
-  const DateInputField._({
-    Key key,
-    this.initialDate,
-    this.firstDate,
-    this.lastDate,
-  }) : super(key: key);
-
-  factory DateInputField.create({Key key}) {
-    return DateInputField._(
-      key: key,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1960),
-      lastDate: DateTime(2030),
-    );
-  }
+class _DateInputFieldState extends State<DateInputField> {
+  TextEditingController _value = TextEditingController();
+  final DateFormat _dateFormat = DateFormat('yyyy-MM-dd');
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
-          child: InputDatePickerFormField(
-            firstDate: firstDate,
-            lastDate: lastDate,
-            initialDate: initialDate,
-            fieldLabelText: "Date Input",
+          child: TextField(
+            enabled: false,
+            controller: _value,
           ),
         ),
         GestureDetector(
-          onTap: () {
-            showDatePicker(
-                context: context,
-                initialDate: initialDate,
-                firstDate: firstDate,
-                lastDate: lastDate);
-          },
+          onTap: _setDate,
           child: Padding(
             padding: const EdgeInsets.only(top: 20),
             child: Icon(Icons.event),
@@ -48,5 +29,64 @@ class DateInputField extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  _setDate() async {
+    DateTime target = (null == _value.text || _value.text.isEmpty)
+        ? DateTime.now()
+        : _dateFormat.parse(_value.text);
+
+    DateTime selected = await showDatePicker(
+        context: context,
+        initialDate: target,
+        firstDate: DateTime(1990),
+        lastDate: DateTime(2030));
+
+    if (null != selected) {
+      setState(() {
+        _value.text = _dateFormat.format(selected);
+      });
+    }
+  }
+}
+
+class TimeInputField extends StatefulWidget {
+  @override
+  _TimeInputFieldState createState() => _TimeInputFieldState();
+}
+
+class _TimeInputFieldState extends State<TimeInputField> {
+  TextEditingController _value = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: TextField(
+            enabled: false,
+            controller: _value,
+          ),
+        ),
+        GestureDetector(
+          onTap: _setTime,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Icon(Icons.schedule),
+          ),
+        ),
+      ],
+    );
+  }
+
+  _setTime() async {
+    TimeOfDay time =
+        await showTimePicker(context: context, initialTime: TimeOfDay.now());
+
+    if (null != time) {
+      setState(() {
+        _value.text = time.format(context);
+      });
+    }
   }
 }
