@@ -23,3 +23,27 @@ class FormFieldWithValidator extends StatelessWidget {
     );
   }
 }
+
+class ConfirmToDelete extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text("Confirm"),
+      content: Text("Do you want to delete this product!"),
+      actions: [
+        FlatButton(
+          onPressed: () {
+            Navigator.pop(context, true);
+          },
+          child: Text("Yes"),
+        ),
+        FlatButton(
+          onPressed: () {
+            Navigator.pop(context, false);
+          },
+          child: Text("No"),
+        ),
+      ],
+    );
+  }
+}

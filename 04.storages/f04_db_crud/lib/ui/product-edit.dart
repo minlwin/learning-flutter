@@ -3,6 +3,9 @@ import 'package:f04_db_crud/ui/widget.dart';
 import 'package:flutter/material.dart';
 
 class ProductEdit extends StatefulWidget {
+  final Product product;
+
+  const ProductEdit({Key key, this.product}) : super(key: key);
   @override
   _ProductEditState createState() => _ProductEditState();
 }
@@ -13,10 +16,20 @@ class _ProductEditState extends State<ProductEdit> {
   final ProductRepo _repo = ProductRepo();
 
   @override
+  void initState() {
+    super.initState();
+    if (null != widget.product) {
+      _formData.name.text = widget.product.name;
+      _formData.category.text = widget.product.category;
+      _formData.price.text = widget.product.price.toString();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Product"),
+        title: Text(widget.product == null ? "Add Product" : "Edit Product"),
       ),
       body: Form(
         key: _formState,
@@ -55,10 +68,17 @@ class _ProductEditState extends State<ProductEdit> {
 
   _save() async {
     if (_formState.currentState.validate()) {
-      await _repo.create(Product(
-          name: _formData.name.text,
-          category: _formData.category.text,
-          price: int.parse(_formData.price.text)));
+      if (null == widget.product) {
+        await _repo.create(Product(
+            name: _formData.name.text,
+            category: _formData.category.text,
+            price: int.parse(_formData.price.text)));
+      } else {
+        widget.product.name = _formData.name.text;
+        widget.product.category = _formData.category.text;
+        widget.product.price = int.parse(_formData.price.text);
+        await _repo.update(widget.product);
+      }
       Navigator.pop(context);
     }
   }
