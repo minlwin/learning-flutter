@@ -28,14 +28,24 @@ class _PlayViewState extends State<PlayView> {
   Future<FlagGame> _restore() async {
     SharedPreferences pref = await _preferences;
 
+    // Get Json String from Share Preferences
     String string = pref.get(GAME_STATE);
     if (null != string) {
+      // Decode Json to FlagGame
       return FlagGame.fromJson(jsonDecode(pref.get(GAME_STATE)));
     }
 
-    return FlagGame.of(10);
+    // Generate New Game
+    FlagGame newGame = FlagGame.of(10);
+    // Save New Game State
+    return pref
+        .setString(GAME_STATE, jsonEncode(newGame.toJson()))
+        .then((value) => newGame);
   }
 
+  /*
+   *  If check result game have to  save state 
+   */
   _checkResult(FlagGame game, Question question, String answer) async {
     SharedPreferences pref = await _preferences;
     game.answers.add(answer);
@@ -46,10 +56,14 @@ class _PlayViewState extends State<PlayView> {
 
     setState(() {
       if (game.current < 10) {
+        // If there are some questions
+        // Save Game State
         _flagGame = pref
             .setString(GAME_STATE, jsonEncode(game.toJson()))
             .then((_) => game);
       } else {
+        // If theree is no question
+        // Delete Game State from Share Preference
         _flagGame = pref.remove(GAME_STATE).then((value) => game);
       }
     });
