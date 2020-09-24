@@ -8,17 +8,17 @@ Flutter ရဲ့ Basice of the basic တွေကို ဒီနေရာမ�
 
 <table style="width=100%">
   <tr>
-    <td style="width:30%">
+    <td>
       <h4>1. Hello Fluter</h4>
       <img src="images/1-hello-flutter.png">
     </td>
-    <td style="width:30%">
+    <td>
       <h4>2. Stateless Widgets</h4>
-      <img src="images/2-stateless-widget.png">
+      <img src="images/2-stateless-widget.png" style="width:95%">
     </td>
-    <td style="width:30%">
+    <td>
       <h4>3. Statefull Widgets</h4>
-      <img src="images/3-stateful-widget.png">
+      <img src="images/3-stateful-widget.png" style="width:95%">
     </td>
   </tr>
 </table>
