@@ -10,15 +10,15 @@ Flutter ရဲ့ Basice of the basic တွေကို ဒီနေရာမ�
   <tr>
     <td>
       <h4>1. Hello Fluter</h4>
-      <img src="../images/1-hello-flutter.png" width="100%">
+      <img src="images/1-hello-flutter.png" width="100%">
     </td>
     <td>
       <h4>1. Hello Fluter</h4>
-      <img src="../images/1-hello-flutter.png" width="100%">
+      <img src="images/1-hello-flutter.png" width="100%">
     </td>
     <td>
       <h4>1. Hello Fluter</h4>
-      <img src="../images/1-hello-flutter.png" width="100%">
+      <img src="images/1-hello-flutter.png" width="100%">
     </td>
   </tr>
 </table>
