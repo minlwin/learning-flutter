@@ -8,20 +8,15 @@ class FilledInputs extends StatelessWidget {
       padding: EdgeInsets.all(24),
       child: Column(
         children: [
+          FilledBoxInput(label: "Name", filledColor: Colors.blue[100]),
+          SizedBox(height: 8),
           FilledBoxInput(
-            label: "Name",
-            filledColor: Colors.blue[100],
-          ),
+              label: "Password", filledColor: Colors.blue[100], hidePass: true),
+          SizedBox(height: 8),
           FilledBoxInput(
-            label: "Password",
-            filledColor: Colors.blue[100],
-            hidePass: true,
-          ),
-          FilledBoxInput(
-            label: "Phone",
-            filledColor: Colors.blue[100],
-            inputType: TextInputType.phone,
-          )
+              label: "Phone",
+              filledColor: Colors.blue[100],
+              inputType: TextInputType.phone)
         ],
       ),
     );

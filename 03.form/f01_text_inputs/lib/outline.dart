@@ -8,7 +8,9 @@ class OutlineInputs extends StatelessWidget {
       padding: EdgeInsets.all(24),
       child: Column(children: [
         OutlineBoxInput(label: "Name"),
+        SizedBox(height: 8),
         OutlineBoxInput(label: "Password", hidePass: true),
+        SizedBox(height: 8),
         OutlineBoxInput(label: "Phone", inputType: TextInputType.phone)
       ]),
     );

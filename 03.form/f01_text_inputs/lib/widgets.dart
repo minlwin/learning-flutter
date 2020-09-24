@@ -27,36 +27,25 @@ class FilledBoxInput extends StatelessWidget {
   final TextInputType inputType;
   final bool hidePass;
   final Color filledColor;
-  final double borderRadius;
 
   const FilledBoxInput({
     Key key,
     @required this.label,
     @required this.filledColor,
-    this.borderRadius = 8,
     this.inputType = TextInputType.name,
     this.hidePass = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 8),
-      decoration: BoxDecoration(
-        color: filledColor,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(borderRadius),
-          topRight: Radius.circular(borderRadius),
-        ),
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: label,
+        filled: true,
+        fillColor: filledColor,
       ),
-      child: TextFormField(
-        decoration: InputDecoration(
-          labelText: label,
-          contentPadding: EdgeInsets.all(8),
-        ),
-        keyboardType: TextInputType.name,
-        obscureText: hidePass,
-      ),
+      keyboardType: inputType,
+      obscureText: hidePass,
     );
   }
 }
@@ -75,16 +64,13 @@ class OutlineBoxInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 8),
-      child: TextFormField(
-        decoration: InputDecoration(
-          labelText: label,
-          border: OutlineInputBorder(),
-        ),
-        keyboardType: inputType,
-        obscureText: hidePass,
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: label,
+        border: OutlineInputBorder(),
       ),
+      keyboardType: inputType,
+      obscureText: hidePass,
     );
   }
 }
