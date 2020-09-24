@@ -8,15 +8,15 @@ Flutter ရဲ့ Basice of the basic တွေကို ဒီနေရာမ�
 
 <table style="width=100%">
   <tr>
-    <td style="vertical-align:top: horizontal-align:center;">
+    <td style="vertical-align:top: text-align: center;">
       <h4>1. Hello Fluter</h4>
       <img src="images/1-hello-flutter.png" width="90%">
     </td>
-    <td style="vertical-align:top: horizontal-align:center;">
+    <td style="vertical-align:top: text-align: center;">
       <h4>2. Stateless Widgets</h4>
       <img src="images/2-stateless-widget.png" width="90%">
     </td>
-    <td style="vertical-align:top: horizontal-align:center;">
+    <td style="vertical-align:top: text-align: center;">
       <h4>3. Statefull Widgets</h4>
       <img src="images/3-stateful-widget.png" width="90%">
     </td>
