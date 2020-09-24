@@ -10,15 +10,15 @@ Flutter ရဲ့ Basice of the basic တွေကို ဒီနေရာမ�
   <tr>
     <td>
       <h4>1. Hello Fluter</h4>
-      <img src="images/1-hello-flutter.png" width="100%">
+      <img src="images/1-hello-flutter.png" width="90%">
     </td>
     <td>
       <h4>2. Stateless Widgets</h4>
-      <img src="images/2-stateless-widget.png" width="100%">
+      <img src="images/2-stateless-widget.png" width="90%">
     </td>
     <td>
       <h4>3. Statefull Widgets</h4>
-      <img src="images/3-stateful-widget.png" width="100%">
+      <img src="images/3-stateful-widget.png" width="90%">
     </td>
   </tr>
 </table>
