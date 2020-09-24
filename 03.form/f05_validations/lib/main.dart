@@ -60,7 +60,7 @@ class _MyFormState extends State<MyForm> {
                   ),
                   TextFormField(
                     controller: _password,
-                    validator: NotEmpty("Password").validate,
+                    validator: MinValue(fieldName: "Password", min: 6).validate,
                     decoration: InputDecoration(
                       labelText: "Password",
                       hintText: "Enter Password",
