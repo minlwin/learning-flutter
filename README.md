@@ -8,9 +8,11 @@ Flutter ကို Self Study လုပ်ပြီး လေ့လာနေသ�
 
 ## [Basic](https://github.com/minlwin/learning-flutter/tree/master/01.basic)
 
-ဒီနေရာကတော့ အခြေခံသိသင့်သိထိုက်တာတွေကို စမ်းသပ်ထားတဲ့ နေရာဖြစ်ပါတယ်။ Widget တွေနဲ့ Layout ကို သတ်မှတ်ထားတဲ့ Widget တွေကို စမ်းသပ်ထားတာ အများအပြားရှိပါမယ်။ Stateless Widget, Stateful Widget, Inherited Widget ဒါတွေကို ဒီနေရာမှာလေ့လာသွားမှာဖြစ်ပါတယ်။ Flutter ရဲ့ Basice of the basic တွေကို ဒီနေရာမှာ လေ့လာသွားမှာ ဖြစ်ပါတယ်။
+ဒီနေရာကတော့ အခြေခံသိသင့်သိထိုက်တာတွေကို စမ်းသပ်ထားတဲ့ နေရာဖြစ်ပါတယ်။ အခြေခံတွေဖြစ်ကြတဲ့ Stateless Widget, Stateful Widget, Inherited Widget ဒါတွေကို ဒီနေရာမှာလေ့လာသွားမှာဖြစ်ပါတယ်။
 
 တဖန် Flutter မှာ Layout Widget တွေရှိိကြပါတယ်။ UI ကို ရေးသားတဲ့ နေရာမှာ Layout ဆိုတာလဲ မရှိမဖြစ် အရေးပါတဲ့ အချက်တစ်ခုဖြစ်ပါတယ်။ ဒီနေရာမှာ ဒါတွေကို လေ့လာသွားမှာ ဖြစ်ပါတယ်။
+
+Flutter ရဲ့ Basice of the basic တွေကို ဒီနေရာမှာ လေ့လာသွားမှာ ဖြစ်ပါတယ်။
 
 ## [Routing](https://github.com/minlwin/learning-flutter/tree/master/02.routing)
 
