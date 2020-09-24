@@ -21,7 +21,11 @@ class _CalculatorState extends State<Calculator> {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         child: Column(
-          children: [_inputs(), Spacer(), _buttons(), Spacer(), _resultArea()],
+          children: [
+            _resultArea(),
+            _inputs(),
+            _buttons(),
+          ],
         ),
       ),
     );
