@@ -23,7 +23,8 @@ class _PaddingDemoState extends State<PaddingDemo> {
               child: Container(
                 color: Colors.purple,
                 child: AnimatedPadding(
-                  padding: EdgeInsets.all(_value),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: _value, vertical: _value * 2),
                   duration: Duration(microseconds: 500),
                   child: Container(
                     color: Colors.white,
