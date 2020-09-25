@@ -17,7 +17,12 @@ class SideBar extends StatelessWidget {
     return Drawer(
       child: Column(
         children: [
-          _header(context),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushReplacementNamed(context, "/");
+            },
+            child: _header(context),
+          ),
           MenuItem(
             name: ContainerDemo.title,
             route: ContainerDemo.route,
@@ -39,20 +44,20 @@ class SideBar extends StatelessWidget {
             route: SizeDemo.route,
           ),
           MenuItem(
-            name: PositionDemo.title,
-            route: PositionDemo.route,
-          ),
-          MenuItem(
             name: AlignmentDemo.title,
             route: AlignmentDemo.route,
           ),
           MenuItem(
-            name: SwitcherDemo.title,
-            route: SwitcherDemo.route,
-          ),
-          MenuItem(
             name: TextStyleDemo.title,
             route: TextStyleDemo.route,
+          ),
+          MenuItem(
+            name: PositionDemo.title,
+            route: PositionDemo.route,
+          ),
+          MenuItem(
+            name: SwitcherDemo.title,
+            route: SwitcherDemo.route,
           ),
           MenuItem(
             name: PhysicsDemo.title,

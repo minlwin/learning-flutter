@@ -8,7 +8,10 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Template(
       title: title,
-      body: Container(),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 40),
+        child: Image.asset("images/implicit-animation.png"),
+      ),
     );
   }
 }

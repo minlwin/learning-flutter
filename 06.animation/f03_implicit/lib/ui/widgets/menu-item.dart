@@ -15,7 +15,7 @@ class MenuItem extends StatelessWidget {
       child: ListTile(
         title: Text(
           name,
-          style: Theme.of(context).textTheme.headline6,
+          style: TextStyle(fontSize: 18),
         ),
         trailing: Icon(Icons.send),
       ),
