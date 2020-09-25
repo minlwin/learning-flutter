@@ -29,7 +29,8 @@ class _CrossFadeDemoState extends State<CrossFadeDemo> {
                   _first ? CrossFadeState.showFirst : CrossFadeState.showSecond,
               duration: Duration(seconds: 2),
               firstCurve: Curves.easeInOutCirc,
-              secondCurve: Curves.bounceInOut,
+              secondCurve: Curves.easeInOutExpo,
+              sizeCurve: Curves.easeInToLinear,
             ),
             Container(
               width: 160,
