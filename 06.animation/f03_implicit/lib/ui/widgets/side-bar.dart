@@ -40,20 +40,20 @@ class SideBar extends StatelessWidget {
             route: PaddingDemo.route,
           ),
           MenuItem(
-            name: SizeDemo.title,
-            route: SizeDemo.route,
-          ),
-          MenuItem(
             name: AlignmentDemo.title,
             route: AlignmentDemo.route,
           ),
           MenuItem(
-            name: TextStyleDemo.title,
-            route: TextStyleDemo.route,
+            name: SizeDemo.title,
+            route: SizeDemo.route,
           ),
           MenuItem(
             name: PositionDemo.title,
             route: PositionDemo.route,
+          ),
+          MenuItem(
+            name: TextStyleDemo.title,
+            route: TextStyleDemo.route,
           ),
           MenuItem(
             name: SwitcherDemo.title,
