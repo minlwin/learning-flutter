@@ -46,12 +46,14 @@ class _PositionDemoState extends State<PositionDemo> {
     );
   }
 
-  _setTop(double top) {
-    double maxTop = MediaQuery.of(context).size.height - 280;
+  _setTop(double data) {
+    double top = data - 100 < 0 ? 0 : data - 100;
+    double maxTop = MediaQuery.of(context).size.height - 260;
     _top = top > maxTop ? maxTop : top;
   }
 
-  _setLeft(double left) {
+  _setLeft(double data) {
+    double left = data - 80 < 0 ? 0 : data - 80;
     double maxLeft = MediaQuery.of(context).size.width - 160;
     _left = left > maxLeft ? maxLeft : left;
   }
