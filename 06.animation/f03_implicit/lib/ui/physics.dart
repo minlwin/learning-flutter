@@ -10,33 +10,33 @@ class PhysicsDemo extends StatefulWidget {
 }
 
 class _PhysicsDemoState extends State<PhysicsDemo> {
-  double _sliderValue = 50;
+  bool _state = true;
 
   @override
   Widget build(BuildContext context) {
     return Template(
       title: PhysicsDemo.title,
-      body: Column(
-        children: [
-          Expanded(
-            flex: 3,
-            child: Center(
+      body: Center(
+        child: GestureDetector(
+          onTap: () {
+            setState(() {
+              _state = !_state;
+            });
+          },
+          child: AnimatedPhysicalModel(
+            shape: BoxShape.circle,
+            color: _state ? Colors.grey : Colors.yellow,
+            elevation: _state ? 10 : 30,
+            shadowColor: _state ? Colors.blue : Colors.red,
+            duration: Duration(seconds: 1),
+            child: Container(
+              width: 200,
+              height: 200,
+              padding: EdgeInsets.all(24),
               child: Image.asset("images/jet.png"),
             ),
           ),
-          Expanded(
-              child: Column(
-            children: [
-              Text("Slide Here"),
-              Slider(
-                value: _sliderValue,
-                onChanged: (value) {},
-                min: 20,
-                max: 300,
-              )
-            ],
-          ))
-        ],
+        ),
       ),
     );
   }
