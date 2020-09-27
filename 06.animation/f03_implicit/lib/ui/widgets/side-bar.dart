@@ -24,6 +24,10 @@ class SideBar extends StatelessWidget {
             child: _header(context),
           ),
           MenuItem(
+            name: TextStyleDemo.title,
+            route: TextStyleDemo.route,
+          ),
+          MenuItem(
             name: ContainerDemo.title,
             route: ContainerDemo.route,
           ),
@@ -48,16 +52,12 @@ class SideBar extends StatelessWidget {
             route: SizeDemo.route,
           ),
           MenuItem(
-            name: PositionDemo.title,
-            route: PositionDemo.route,
-          ),
-          MenuItem(
-            name: TextStyleDemo.title,
-            route: TextStyleDemo.route,
-          ),
-          MenuItem(
             name: SwitcherDemo.title,
             route: SwitcherDemo.route,
+          ),
+          MenuItem(
+            name: PositionDemo.title,
+            route: PositionDemo.route,
           ),
           MenuItem(
             name: PhysicsDemo.title,
