@@ -36,12 +36,11 @@ class _FadeDemoState extends State<FadeDemo>
       body: Scaffold(
         floatingActionButton: ControlButton(controller: _controller),
         body: FadeTransition(
-          opacity: _controller.drive(
-            Tween(
-              begin: 1.0,
-              end: 0.0,
-            ),
-          ),
+          opacity: Tween(
+            begin: 1.0,
+            end: 0.0,
+          ).animate(CurvedAnimation(
+              parent: _controller, curve: Curves.fastOutSlowIn)),
           child: Container(
             margin:
                 EdgeInsets.only(top: 200, left: 20, bottom: 200, right: 100),
