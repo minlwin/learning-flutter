@@ -8,8 +8,17 @@ class ControlButton extends StatefulWidget {
   _ControlButtonState createState() => _ControlButtonState();
 }
 
-class _ControlButtonState extends State<ControlButton> {
-  IconData _iconData = Icons.pause;
+class _ControlButtonState extends State<ControlButton>
+    with SingleTickerProviderStateMixin {
+  AnimationController _btnController;
+
+  @override
+  void initState() {
+    _btnController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 700));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
@@ -17,14 +26,15 @@ class _ControlButtonState extends State<ControlButton> {
         setState(() {
           if (widget.controller.isAnimating) {
             widget.controller.stop();
-            _iconData = Icons.play_arrow;
+            _btnController.forward();
           } else {
             widget.controller.repeat();
-            _iconData = Icons.pause;
+            _btnController.reverse();
           }
         });
       },
-      child: Icon(_iconData),
+      child: AnimatedIcon(
+          icon: AnimatedIcons.pause_play, progress: _btnController),
     );
   }
 }

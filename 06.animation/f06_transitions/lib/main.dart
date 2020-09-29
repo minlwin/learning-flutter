@@ -37,7 +37,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: _routes,
       theme: Theme.of(context).copyWith(
-          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red)),
+        primaryColor: Colors.red,
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red),
+      ),
       initialRoute: Home.route,
       debugShowCheckedModeBanner: false,
     );
