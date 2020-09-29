@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ControlButton extends StatefulWidget {
   final AnimationController controller;
 
-  const ControlButton({Key key, this.controller}) : super(key: key);
+  const ControlButton({Key key, @required this.controller}) : super(key: key);
   @override
   _ControlButtonState createState() => _ControlButtonState();
 }
