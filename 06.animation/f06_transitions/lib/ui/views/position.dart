@@ -32,7 +32,21 @@ class _PositionDemoState extends State<PositionDemo>
     return Template(
       title: PositionDemo.title,
       body: Stack(
-        children: [],
+        children: [
+          Container(
+            color: Colors.blue[50],
+          ),
+          PositionedTransition(
+            rect: RelativeRectTween(
+              begin: RelativeRect.fromLTRB(0, 280, 0, 0),
+              end: RelativeRect.fromLTRB(100, -380, 100, 100),
+            ).animate(CurvedAnimation(
+                parent: _controller, curve: Curves.elasticInOut)),
+            child: Image.asset(
+              "images/jet.png",
+            ),
+          )
+        ],
       ),
     );
   }

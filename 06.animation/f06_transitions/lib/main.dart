@@ -8,6 +8,7 @@ import 'package:f06_transitions/ui/views/related-poistion.dart';
 import 'package:f06_transitions/ui/views/rotation.dart';
 import 'package:f06_transitions/ui/views/scale.dart';
 import 'package:f06_transitions/ui/views/size.dart';
+import 'package:f06_transitions/ui/views/slide.dart';
 import 'package:f06_transitions/ui/views/status.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
     RotationDemo.route: (_) => RotationDemo(),
     ScaleDemo.route: (_) => ScaleDemo(),
     SizeDemo.route: (_) => SizeDemo(),
+    SlideDemo.route: (_) => SlideDemo(),
     StatusDemo.route: (_) => StatusDemo()
   };
 
@@ -34,6 +36,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: _routes,
+      theme: Theme.of(context).copyWith(
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red)),
       initialRoute: Home.route,
       debugShowCheckedModeBanner: false,
     );
