@@ -41,36 +41,6 @@ class _MyListState extends State<MyList> with SingleTickerProviderStateMixin {
     );
   }
 
-  _buildItem(int index, Animation<double> animation) => SlideTransition(
-        position: _animation(animation),
-        child: _items[index],
-      );
-
-  _animation(Animation<double> animation) => Tween(
-        begin: Offset(1, 0),
-        end: Offset(0, 0),
-      ).animate(
-        CurvedAnimation(
-          parent: animation,
-          curve: Curves.easeInOutCubic,
-        ),
-      );
-
-  _button() => FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _show = !_show;
-            _show ? _btnIconController.forward() : _btnIconController.reverse();
-            _show ? _load() : _clear();
-          });
-        },
-        child: AnimatedIcon(
-          icon: AnimatedIcons.menu_close,
-          progress: _btnIconController,
-          textDirection: TextDirection.rtl,
-        ),
-      );
-
   _load() {
     var future = Future(() {});
     for (var i = 0; i < 10; i++) {
@@ -104,6 +74,21 @@ class _MyListState extends State<MyList> with SingleTickerProviderStateMixin {
     }
   }
 
+  _buildItem(int index, Animation<double> animation) => SlideTransition(
+        position: _animation(animation),
+        child: _items[index],
+      );
+
+  _animation(Animation<double> animation) => Tween(
+        begin: Offset(1, 0),
+        end: Offset(0, 0),
+      ).animate(
+        CurvedAnimation(
+          parent: animation,
+          curve: Curves.easeInOutCubic,
+        ),
+      );
+
   _item(int index) => Card(
         child: Padding(
           padding: EdgeInsets.all(16),
@@ -111,6 +96,21 @@ class _MyListState extends State<MyList> with SingleTickerProviderStateMixin {
             "Item ${index + 1}",
             style: Theme.of(context).textTheme.headline5,
           ),
+        ),
+      );
+
+  _button() => FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _show = !_show;
+            _show ? _btnIconController.forward() : _btnIconController.reverse();
+            _show ? _load() : _clear();
+          });
+        },
+        child: AnimatedIcon(
+          icon: AnimatedIcons.menu_close,
+          progress: _btnIconController,
+          textDirection: TextDirection.rtl,
         ),
       );
 }
