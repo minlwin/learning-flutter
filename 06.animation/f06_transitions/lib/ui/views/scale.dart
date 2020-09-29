@@ -1,3 +1,4 @@
+import 'package:f06_transitions/ui/widgets/control-button.dart';
 import 'package:f06_transitions/ui/widgets/template.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,6 @@ class ScaleDemo extends StatefulWidget {
 class _ScaleDemoState extends State<ScaleDemo>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
-  IconData _iconData = Icons.pause;
 
   @override
   void initState() {
@@ -33,7 +33,9 @@ class _ScaleDemoState extends State<ScaleDemo>
     return Template(
       title: ScaleDemo.title,
       body: Scaffold(
-        floatingActionButton: _button(),
+        floatingActionButton: ControlButton(
+          controller: _controller,
+        ),
         body: Center(
           child: ScaleTransition(
             scale: Tween(begin: 0.5, end: 2.0).animate(_controller),
@@ -47,19 +49,4 @@ class _ScaleDemoState extends State<ScaleDemo>
       ),
     );
   }
-
-  _button() => FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            if (_controller.isAnimating) {
-              _controller.stop();
-              _iconData = Icons.play_arrow;
-            } else {
-              _controller.repeat();
-              _iconData = Icons.pause;
-            }
-          });
-        },
-        child: Icon(_iconData),
-      );
 }

@@ -1,3 +1,4 @@
+import 'package:f06_transitions/ui/widgets/control-button.dart';
 import 'package:f06_transitions/ui/widgets/template.dart';
 import 'package:flutter/material.dart';
 
@@ -12,14 +13,12 @@ class AlignDemo extends StatefulWidget {
 class _AlignDemoState extends State<AlignDemo>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
-  IconData _iconData = Icons.pause;
 
   @override
   void initState() {
     _controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 3),
-      reverseDuration: Duration(seconds: 3),
     )..repeat();
     super.initState();
   }
@@ -35,7 +34,9 @@ class _AlignDemoState extends State<AlignDemo>
     return Template(
       title: AlignDemo.title,
       body: Scaffold(
-        floatingActionButton: _button(),
+        floatingActionButton: ControlButton(
+          controller: _controller,
+        ),
         body: Container(
           padding: EdgeInsets.all(16),
           alignment: Alignment.center,
@@ -55,19 +56,4 @@ class _AlignDemoState extends State<AlignDemo>
       ),
     );
   }
-
-  _button() => FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            if (_controller.isAnimating) {
-              _controller.stop();
-              _iconData = Icons.play_arrow;
-            } else {
-              _controller.repeat();
-              _iconData = Icons.pause;
-            }
-          });
-        },
-        child: Icon(_iconData),
-      );
 }
