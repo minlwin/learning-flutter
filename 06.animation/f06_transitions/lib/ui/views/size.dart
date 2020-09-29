@@ -32,9 +32,9 @@ class _SizeDemoState extends State<SizeDemo>
         ),
         body: Center(
           child: SizeTransition(
-            sizeFactor: Tween(begin: 1.0, end: 0.0).animate(_controller),
+            sizeFactor: _controller.drive(Tween(begin: 1.0, end: 0.0)),
             child: SizeTransition(
-              sizeFactor: Tween(begin: 0.0, end: 1.0).animate(_controller),
+              sizeFactor: _controller.drive(Tween(begin: 0.0, end: 1.0)),
               axis: Axis.horizontal,
               child: Container(
                 color: Colors.blue,
