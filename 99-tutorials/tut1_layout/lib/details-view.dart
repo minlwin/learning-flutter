@@ -12,65 +12,9 @@ class DetailsView extends StatelessWidget {
             style: Theme.of(context).textTheme.headline3,
           ),
           SizedBox(height: 16),
-          Stack(
-            alignment: Alignment.bottomLeft,
-            children: [
-              ClipRRect(
-                child: Image.asset("images/raider.jpg"),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "BORN TO RIDE",
-                      style: Theme.of(context).textTheme.headline6.copyWith(
-                            color: Colors.yellow,
-                          ),
-                    ),
-                    Text(
-                      "COUNT ME",
-                      style: Theme.of(context).textTheme.headline6.copyWith(
-                            color: Colors.white,
-                          ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
+          _coverImage(context),
           SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Icon(
-                    Icons.event,
-                    color: Colors.green,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 4.0),
-                    child: Text(
-                      "2020/10/10",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  Icon(Icons.star, color: Colors.green),
-                  Icon(Icons.star, color: Colors.green),
-                  Icon(Icons.star, color: Colors.green),
-                  Icon(Icons.star_half, color: Colors.green),
-                  Icon(Icons.star_border, color: Colors.green),
-                ],
-              ),
-            ],
-          ),
+          _statusBar(),
           SizedBox(height: 24),
           Text(
             "Come & Join Us!",
@@ -111,6 +55,66 @@ class DetailsView extends StatelessWidget {
       ),
     );
   }
+
+  _coverImage(BuildContext context) => Stack(
+        alignment: Alignment.bottomLeft,
+        children: [
+          ClipRRect(
+            child: Image.asset("images/raider.jpg"),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "BORN TO RIDE",
+                  style: Theme.of(context).textTheme.headline6.copyWith(
+                        color: Colors.yellow,
+                      ),
+                ),
+                Text(
+                  "COUNT ME",
+                  style: Theme.of(context).textTheme.headline6.copyWith(
+                        color: Colors.white,
+                      ),
+                ),
+              ],
+            ),
+          )
+        ],
+      );
+
+  _statusBar() => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Icon(
+                Icons.event,
+                color: Colors.green,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 4.0),
+                child: Text(
+                  "2020/10/10",
+                  style: TextStyle(fontSize: 18),
+                ),
+              )
+            ],
+          ),
+          Row(
+            children: [
+              Icon(Icons.star, color: Colors.green),
+              Icon(Icons.star, color: Colors.green),
+              Icon(Icons.star, color: Colors.green),
+              Icon(Icons.star_half, color: Colors.green),
+              Icon(Icons.star_border, color: Colors.green),
+            ],
+          ),
+        ],
+      );
 
   _event(Color color, Color text, String time, String title, String location) =>
       Expanded(
