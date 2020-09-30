@@ -76,19 +76,9 @@ class DetailsView extends StatelessWidget {
             "Come & Join Us!",
             style: Theme.of(context).textTheme.headline5,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.monetization_on,
-                color: Colors.red[300],
-              ),
-              SizedBox(width: 8),
-              Text(
-                "180,000 MMK",
-                style: TextStyle(fontSize: 18, color: Colors.red[300]),
-              ),
-            ],
+          Text(
+            "180,000 MMK",
+            style: TextStyle(fontSize: 18, color: Colors.red[300]),
           ),
           SizedBox(height: 16),
           Expanded(
@@ -129,50 +119,29 @@ class DetailsView extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Icon(
-                      Icons.schedule,
-                      color: text,
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          title,
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: text,
-                          ),
-                        ),
-                        Text(
-                          time,
-                          style: TextStyle(
-                            color: text,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                Text(
+                  location,
+                  style: TextStyle(
+                    color: text,
+                    fontSize: 24,
+                  ),
+                ),
+                Text(
+                  time,
+                  style: TextStyle(
+                    color: text,
+                  ),
                 ),
                 SizedBox(
                   height: 8,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 30),
-                  child: Text(
-                    location,
-                    style: TextStyle(
-                      color: text,
-                      fontSize: 24,
-                    ),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: text,
                   ),
                 ),
               ],
