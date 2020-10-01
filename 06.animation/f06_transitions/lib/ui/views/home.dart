@@ -8,7 +8,24 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Template(
       title: title,
-      body: Container(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FlutterLogo(
+              size: 200,
+            ),
+            Text(
+              "Transitions",
+              style: Theme.of(context).textTheme.headline3,
+            ),
+            Text(
+              "Learning Flutter",
+              style: Theme.of(context).textTheme.headline5,
+            )
+          ],
+        ),
+      ),
     );
   }
 }

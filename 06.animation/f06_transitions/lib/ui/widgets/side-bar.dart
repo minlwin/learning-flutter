@@ -9,7 +9,6 @@ import 'package:f06_transitions/ui/views/rotation.dart';
 import 'package:f06_transitions/ui/views/scale.dart';
 import 'package:f06_transitions/ui/views/size.dart';
 import 'package:f06_transitions/ui/views/slide.dart';
-import 'package:f06_transitions/ui/views/status.dart';
 import 'package:f06_transitions/ui/widgets/menu-iitem.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +31,6 @@ class SideBar extends StatelessWidget {
               name: RelatedPositionDemo.title,
               route: RelatedPositionDemo.route),
           MenuItem(name: SlideDemo.title, route: SlideDemo.route),
-          MenuItem(name: StatusDemo.title, route: StatusDemo.route),
         ],
       ),
     );

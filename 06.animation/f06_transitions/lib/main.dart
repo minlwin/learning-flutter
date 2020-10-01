@@ -9,7 +9,6 @@ import 'package:f06_transitions/ui/views/rotation.dart';
 import 'package:f06_transitions/ui/views/scale.dart';
 import 'package:f06_transitions/ui/views/size.dart';
 import 'package:f06_transitions/ui/views/slide.dart';
-import 'package:f06_transitions/ui/views/status.dart';
 import 'package:flutter/material.dart';
 
 main(List<String> args) {
@@ -29,7 +28,6 @@ class MyApp extends StatelessWidget {
     ScaleDemo.route: (_) => ScaleDemo(),
     SizeDemo.route: (_) => SizeDemo(),
     SlideDemo.route: (_) => SlideDemo(),
-    StatusDemo.route: (_) => StatusDemo()
   };
 
   @override

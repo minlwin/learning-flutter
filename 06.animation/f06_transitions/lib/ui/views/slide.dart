@@ -18,7 +18,7 @@ class _SlideDemoState extends State<SlideDemo>
   void initState() {
     _controller =
         AnimationController(vsync: this, duration: Duration(seconds: 5))
-          ..repeat();
+          ..repeat(reverse: true);
     super.initState();
   }
 
@@ -34,7 +34,27 @@ class _SlideDemoState extends State<SlideDemo>
       title: SlideDemo.title,
       body: Scaffold(
         floatingActionButton: ControlButton(controller: _controller),
-        body: Container(),
+        body: SlideTransition(
+          position: Tween(
+            begin: Offset.zero,
+            end: Offset(1.5, 0),
+          ).animate(
+              CurvedAnimation(parent: _controller, curve: Curves.elasticIn)),
+          child: Container(
+            alignment: Alignment.center,
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 80,
+                  child: FlutterLogo(
+                    size: 120,
+                  ),
+                ),
+                Image.asset("images/bike.png"),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
