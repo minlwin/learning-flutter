@@ -8,10 +8,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Data;
-
 @Entity
-@Data
 public class Township {
 
 	@Id
@@ -21,4 +18,29 @@ public class Township {
 	@ManyToOne
 	private Division division;
 	private String name;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Division getDivision() {
+		return division;
+	}
+
+	public void setDivision(Division division) {
+		this.division = division;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

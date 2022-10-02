@@ -10,9 +10,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.jdc.pos.model.entity.Category_;
 import com.jdc.pos.model.entity.Product;
-import com.jdc.pos.model.entity.Product_;
 import com.jdc.pos.model.repo.ProductRepo;
 
 @Service
@@ -28,13 +26,13 @@ public class ProductService {
 			var predicates = new ArrayList<Predicate>();
 
 			if (category > 0) {
-				var pred = builder.equal(root.get(Product_.category)
-						.get(Category_.id), category);
+				var pred = builder.equal(root.get("category")
+						.get("add"), category);
 				predicates.add(pred);
 			}
 
-			if (!StringUtils.isEmpty(name)) {
-				var pred  = builder.like(builder.lower(root.get(Product_.name)), 
+			if (!StringUtils.hasLength(name)) {
+				var pred  = builder.like(builder.lower(root.get("name")), 
 						name.toLowerCase().concat("%"));
 				predicates.add(pred);
 			}

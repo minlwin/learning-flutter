@@ -11,7 +11,7 @@ class LocationApi {
 
   divisions() {
     return http
-        .get("http://$server:8080/locations")
+        .get(Uri.http("$server:8080", "/locations"))
         .then((value) => json.decode(value.body))
         .then((value) =>
             List.from(value).map((e) => Division.fromJson(e)).toList());
@@ -19,7 +19,7 @@ class LocationApi {
 
   divisionWithTownships(int id) {
     return http
-        .get("http://$server:8080/locations/$id")
+        .get(Uri.http("$server:8080", "/locations/$id"))
         .then((value) => json.decode(value.body))
         .then((value) => DivisionWithTownship.fromJson(value));
   }

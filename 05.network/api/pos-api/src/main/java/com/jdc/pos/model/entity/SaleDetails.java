@@ -6,9 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import lombok.Data;
-
-@Data
 @Entity
 public class SaleDetails {
 
@@ -21,4 +18,45 @@ public class SaleDetails {
 	private Product product;
 	private int price;
 	private int quantity;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Sale getSale() {
+		return sale;
+	}
+
+	public void setSale(Sale sale) {
+		this.sale = sale;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 }
